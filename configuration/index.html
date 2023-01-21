@@ -1,0 +1,6581 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.easybuild.io/configuration/">
+      
+      
+        <link rel="prev" href="../installation/">
+      
+      
+        <link rel="next" href="../using-easybuild/">
+      
+      <link rel="icon" href="../favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Configuration - EasyBuild - building software with ease</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/asciinema-player-2.6.1.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-BLVCH6991S"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-BLVCH6991S",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-BLVCH6991S",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="easybuild" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuring_easybuild" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="EasyBuild - building software with ease" class="md-header__button md-logo" aria-label="EasyBuild - building software with ease" data-md-component="logo">
+      
+  <img src="../img/easybuild_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EasyBuild - building software with ease
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/easybuilders/easybuild-easyconfigs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EasyBuild @ GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="EasyBuild - building software with ease" class="md-nav__button md-logo" aria-label="EasyBuild - building software with ease" data-md-component="logo">
+      
+  <img src="../img/easybuild_logo.png" alt="logo">
+
+    </a>
+    EasyBuild - building software with ease
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/easybuilders/easybuild-easyconfigs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EasyBuild @ GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Basic info
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basic info" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic info
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-easybuild/" class="md-nav__link">
+        What is EasyBuild?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminology/" class="md-nav__link">
+        Terminology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="true">
+          Getting started with EasyBuild
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started with EasyBuild" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started with EasyBuild
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Configuration
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration_types" class="md-nav__link">
+    Supported configuration types
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported configuration types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_consistency" class="md-nav__link">
+    Consistency across supported configuration types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration_file" class="md-nav__link">
+    Configuration file(s)
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration file(s)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list_of_configuration_files" class="md-nav__link">
+    List of used configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default_configuration_files" class="md-nav__link">
+    Default configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-configuration-files" class="md-nav__link">
+    Multiple configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignored-configuration-files" class="md-nav__link">
+    Ignored configuration files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-format" class="md-nav__link">
+    Configuration file format
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration file format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_file_templates_constants" class="md-nav__link">
+    Templates and constants supported in configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-template-configuration-file" class="md-nav__link">
+    Generating a template configuration file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration_env_vars" class="md-nav__link">
+    Environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration_cmdline" class="md-nav__link">
+    Command line arguments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration_show_config" class="md-nav__link">
+    Overview of current configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration_available_settings" class="md-nav__link">
+    Available configuration settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Available configuration settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_mandatory_settings" class="md-nav__link">
+    Mandatory configuration settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Mandatory configuration settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sourcepath" class="md-nav__link">
+    Source path (--sourcepath)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buildpath" class="md-nav__link">
+    Build path (--buildpath)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installpath" class="md-nav__link">
+    Software and modules install path
+  </a>
+  
+    <nav class="md-nav" aria-label="Software and modules install path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installpath_direct_options" class="md-nav__link">
+    Direct options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parent_installpath" class="md-nav__link">
+    Parent install path: --installpath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-install-path-for-software-and-module-file" class="md-nav__link">
+    Full install path for software and module file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-modulepath" class="md-nav__link">
+    Updating $MODULEPATH
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easyconfigs_repo" class="md-nav__link">
+    Easyconfigs repository (--repository, --repositorypath)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logfile_format" class="md-nav__link">
+    Logfile format (--logfile-format)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration_optional_settings" class="md-nav__link">
+    Optional configuration settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional configuration settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefix" class="md-nav__link">
+    Overall prefix path (--prefix)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installpath_subdirs" class="md-nav__link">
+    Software and modules install path subdirectories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_tool" class="md-nav__link">
+    Modules tool (--modules-tool)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_naming_scheme" class="md-nav__link">
+    Active module naming scheme (--module-naming-scheme)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_syntax" class="md-nav__link">
+    Module files syntax (--module-syntax)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-easybuild/" class="md-nav__link">
+        Basic usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typical-workflow-example-with-wrf/" class="md-nav__link">
+        Typical workflow with WRF
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Using EasyBuild
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using EasyBuild" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Using EasyBuild
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup-modules/" class="md-nav__link">
+        Backing up existing modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common-toolchains/" class="md-nav__link">
+        Common toolchains
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controlling-compiler-optimization-flags/" class="md-nav__link">
+        Controlling optimization flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detecting-loaded-modules/" class="md-nav__link">
+        Detecting loaded modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-files/" class="md-nav__link">
+        EasyBuild log files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extended-dry-run/" class="md-nav__link">
+        Extended dry run
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../locks/" class="md-nav__link">
+        Locks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manipulating-dependencies/" class="md-nav__link">
+        Manipulating dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../partial-installations/" class="md-nav__link">
+        Partial installations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-2-3-compatibility/" class="md-nav__link">
+        Compatibility with Python 2 + 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../progress-bars/" class="md-nav__link">
+        Progress bars
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../easyconfigs-search-index/" class="md-nav__link">
+        Search index for easyconfigs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-toolchain/" class="md-nav__link">
+        System toolchain
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../submitting-jobs/" class="md-nav__link">
+        Submitting installations as jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracing-progress/" class="md-nav__link">
+        Tracing installation progress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-easyconfig-files/" class="md-nav__link">
+        Writing easyconfig files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Advanced topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced topics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cray-support/" class="md-nav__link">
+        Cray support
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hooks/" class="md-nav__link">
+        Customizing EasyBuild via hooks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../including-additional-python-modules/" class="md-nav__link">
+        Including Python modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging-support/" class="md-nav__link">
+        Packaging support
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rpath-support/" class="md-nav__link">
+        RPATH support
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-external-modules/" class="md-nav__link">
+        Using external modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wrapping-dependencies/" class="md-nav__link">
+        Wrapping dependencies
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" tabindex="0" aria-expanded="false">
+          For developers/contributors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="For developers/contributors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          For developers/contributors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../archived-easyconfigs/" class="md-nav__link">
+        Archived easyconfigs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-style/" class="md-nav__link">
+        Code style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing to EasyBuild
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-with-github/" class="md-nav__link">
+        GitHub integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementing-easyblocks/" class="md-nav__link">
+        Implementing easyblocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../easyconfig-files-local-variables/" class="md-nav__link">
+        Local variables in easyconfigs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-tests/" class="md-nav__link">
+        Unit tests
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" tabindex="0" aria-expanded="false">
+          Experimental features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Experimental features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Experimental features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experimental-features/" class="md-nav__link">
+        (overview)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Creating container images/recipes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../easystack-files/" class="md-nav__link">
+        Easystack files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-yeb-easyconfig-files/" class="md-nav__link">
+        Easyconfig files in YAML syntax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing-extensions-in-parallel/" class="md-nav__link">
+        Installing extensions in parallel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" tabindex="0" aria-expanded="false">
+          Version-specific info
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Version-specific info" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Version-specific info
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/" class="md-nav__link">
+        (overview)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/config-file-constants/" class="md-nav__link">
+        Constants for config files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/easyconfig-constants/" class="md-nav__link">
+        Constants for easyconfigs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/easyblocks/" class="md-nav__link">
+        Easyblocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/eb-help/" class="md-nav__link">
+        EasyBuild configuration options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/easyconfig-parameters/" class="md-nav__link">
+        Easyconfig parameters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/eb-a-wrf/" class="md-nav__link">
+        Easyconfig parameters for WRF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/generic-easyblocks/" class="md-nav__link">
+        Generic easyblocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/easyconfig-license-constants/" class="md-nav__link">
+        License constants for easyconfigs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/easyconfig-templates/" class="md-nav__link">
+        Templates for easyconfigs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/toolchain-opts/" class="md-nav__link">
+        Toolchain options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/toolchains/" class="md-nav__link">
+        Toolchains
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        EasyBuild release notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintainers/" class="md-nav__link">
+        EasyBuild maintainers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" tabindex="0" aria-expanded="false">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1" type="checkbox" id="__nav_11_1" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/">easybuild</a>
+          
+            <label for="__nav_11_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="easybuild" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_1">
+          <span class="md-nav__icon md-icon"></span>
+          easybuild
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_1" type="checkbox" id="__nav_11_1_1" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/base/">base</a>
+          
+            <label for="__nav_11_1_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="base" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          base
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/exceptions/" class="md-nav__link">
+        exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/fancylogger/" class="md-nav__link">
+        fancylogger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/frozendict/" class="md-nav__link">
+        frozendict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/generaloption/" class="md-nav__link">
+        generaloption
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/optcomplete/" class="md-nav__link">
+        optcomplete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/rest/" class="md-nav__link">
+        rest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/testing/" class="md-nav__link">
+        testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/base/wrapper/" class="md-nav__link">
+        wrapper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_2" type="checkbox" id="__nav_11_1_2" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/framework/">framework</a>
+          
+            <label for="__nav_11_1_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="framework" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          framework
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyblock/" class="md-nav__link">
+        easyblock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_2_2" type="checkbox" id="__nav_11_1_2_2" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/framework/easyconfig/">easyconfig</a>
+          
+            <label for="__nav_11_1_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="easyconfig" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          easyconfig
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/constants/" class="md-nav__link">
+        constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/default/" class="md-nav__link">
+        default
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/easyconfig/" class="md-nav__link">
+        easyconfig
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_2_2_4" type="checkbox" id="__nav_11_1_2_2_4" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/framework/easyconfig/format/">format</a>
+          
+            <label for="__nav_11_1_2_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="format" data-md-level="5">
+        <label class="md-nav__title" for="__nav_11_1_2_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          format
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/format/convert/" class="md-nav__link">
+        convert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/format/format/" class="md-nav__link">
+        format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/format/one/" class="md-nav__link">
+        one
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/format/pyheaderconfigobj/" class="md-nav__link">
+        pyheaderconfigobj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/format/two/" class="md-nav__link">
+        two
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/format/version/" class="md-nav__link">
+        version
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/format/yeb/" class="md-nav__link">
+        yeb
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/licenses/" class="md-nav__link">
+        licenses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/parser/" class="md-nav__link">
+        parser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/style/" class="md-nav__link">
+        style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/templates/" class="md-nav__link">
+        templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/tools/" class="md-nav__link">
+        tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/tweak/" class="md-nav__link">
+        tweak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easyconfig/types/" class="md-nav__link">
+        types
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/easystack/" class="md-nav__link">
+        easystack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/extension/" class="md-nav__link">
+        extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/framework/extensioneasyblock/" class="md-nav__link">
+        extensioneasyblock
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/main/" class="md-nav__link">
+        main
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_4" type="checkbox" id="__nav_11_1_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_1_4" tabindex="0" aria-expanded="false">
+          scripts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="scripts" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          scripts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/scripts/bootstrap_eb/" class="md-nav__link">
+        bootstrap_eb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/scripts/clean_gists/" class="md-nav__link">
+        clean_gists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/scripts/findPythonDeps/" class="md-nav__link">
+        findPythonDeps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/scripts/fix_docs/" class="md-nav__link">
+        fix_docs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/scripts/mk_tmpl_easyblock_for/" class="md-nav__link">
+        mk_tmpl_easyblock_for
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/scripts/rpath_args/" class="md-nav__link">
+        rpath_args
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_5" type="checkbox" id="__nav_11_1_5" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/toolchains/">toolchains</a>
+          
+            <label for="__nav_11_1_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="toolchains" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          toolchains
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/cgmpich/" class="md-nav__link">
+        cgmpich
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/cgmpolf/" class="md-nav__link">
+        cgmpolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/cgmvapich2/" class="md-nav__link">
+        cgmvapich2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/cgmvolf/" class="md-nav__link">
+        cgmvolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/cgompi/" class="md-nav__link">
+        cgompi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/cgoolf/" class="md-nav__link">
+        cgoolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/clanggcc/" class="md-nav__link">
+        clanggcc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_5_8" type="checkbox" id="__nav_11_1_5_8" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/toolchains/compiler/">compiler</a>
+          
+            <label for="__nav_11_1_5_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="compiler" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_5_8">
+          <span class="md-nav__icon md-icon"></span>
+          compiler
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/clang/" class="md-nav__link">
+        clang
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/craype/" class="md-nav__link">
+        craype
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/cuda/" class="md-nav__link">
+        cuda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/dummycompiler/" class="md-nav__link">
+        dummycompiler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/fujitsu/" class="md-nav__link">
+        fujitsu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/gcc/" class="md-nav__link">
+        gcc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/ibmxl/" class="md-nav__link">
+        ibmxl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/intel_compilers/" class="md-nav__link">
+        intel_compilers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/inteliccifort/" class="md-nav__link">
+        inteliccifort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/nvhpc/" class="md-nav__link">
+        nvhpc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/pgi/" class="md-nav__link">
+        pgi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/compiler/systemcompiler/" class="md-nav__link">
+        systemcompiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/craycce/" class="md-nav__link">
+        craycce
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/craygnu/" class="md-nav__link">
+        craygnu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/crayintel/" class="md-nav__link">
+        crayintel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/craypgi/" class="md-nav__link">
+        craypgi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/dummy/" class="md-nav__link">
+        dummy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/fcc/" class="md-nav__link">
+        fcc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/ffmpi/" class="md-nav__link">
+        ffmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_5_16" type="checkbox" id="__nav_11_1_5_16" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/toolchains/fft/">fft</a>
+          
+            <label for="__nav_11_1_5_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="fft" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_5_16">
+          <span class="md-nav__icon md-icon"></span>
+          fft
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/fft/fftw/" class="md-nav__link">
+        fftw
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/fft/fujitsufftw/" class="md-nav__link">
+        fujitsufftw
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/fft/intelfftw/" class="md-nav__link">
+        intelfftw
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/foss/" class="md-nav__link">
+        foss
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/fosscuda/" class="md-nav__link">
+        fosscuda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/fujitsu/" class="md-nav__link">
+        fujitsu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gcc/" class="md-nav__link">
+        gcc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gcccore/" class="md-nav__link">
+        gcccore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gcccuda/" class="md-nav__link">
+        gcccuda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gfbf/" class="md-nav__link">
+        gfbf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gimkl/" class="md-nav__link">
+        gimkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gimpi/" class="md-nav__link">
+        gimpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gimpic/" class="md-nav__link">
+        gimpic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/giolf/" class="md-nav__link">
+        giolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/giolfc/" class="md-nav__link">
+        giolfc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmacml/" class="md-nav__link">
+        gmacml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmkl/" class="md-nav__link">
+        gmkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmklc/" class="md-nav__link">
+        gmklc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmpich/" class="md-nav__link">
+        gmpich
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmpich2/" class="md-nav__link">
+        gmpich2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmpit/" class="md-nav__link">
+        gmpit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmpolf/" class="md-nav__link">
+        gmpolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmvapich2/" class="md-nav__link">
+        gmvapich2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gmvolf/" class="md-nav__link">
+        gmvolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gnu/" class="md-nav__link">
+        gnu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/goalf/" class="md-nav__link">
+        goalf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gobff/" class="md-nav__link">
+        gobff
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/goblf/" class="md-nav__link">
+        goblf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gofbf/" class="md-nav__link">
+        gofbf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/golf/" class="md-nav__link">
+        golf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/golfc/" class="md-nav__link">
+        golfc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gomkl/" class="md-nav__link">
+        gomkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gomklc/" class="md-nav__link">
+        gomklc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gompi/" class="md-nav__link">
+        gompi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gompic/" class="md-nav__link">
+        gompic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/goolf/" class="md-nav__link">
+        goolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/goolfc/" class="md-nav__link">
+        goolfc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gpsmpi/" class="md-nav__link">
+        gpsmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gpsolf/" class="md-nav__link">
+        gpsolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gqacml/" class="md-nav__link">
+        gqacml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gsmpi/" class="md-nav__link">
+        gsmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/gsolf/" class="md-nav__link">
+        gsolf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iccifort/" class="md-nav__link">
+        iccifort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iccifortcuda/" class="md-nav__link">
+        iccifortcuda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/ictce/" class="md-nav__link">
+        ictce
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iibff/" class="md-nav__link">
+        iibff
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iimkl/" class="md-nav__link">
+        iimkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iimklc/" class="md-nav__link">
+        iimklc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iimpi/" class="md-nav__link">
+        iimpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iimpic/" class="md-nav__link">
+        iimpic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iiqmpi/" class="md-nav__link">
+        iiqmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/impich/" class="md-nav__link">
+        impich
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/impmkl/" class="md-nav__link">
+        impmkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/intel-para/" class="md-nav__link">
+        intel-para
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/intel/" class="md-nav__link">
+        intel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/intel_compilers/" class="md-nav__link">
+        intel_compilers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/intelcuda/" class="md-nav__link">
+        intelcuda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iomkl/" class="md-nav__link">
+        iomkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iomklc/" class="md-nav__link">
+        iomklc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iompi/" class="md-nav__link">
+        iompi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iompic/" class="md-nav__link">
+        iompic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/ipsmpi/" class="md-nav__link">
+        ipsmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/iqacml/" class="md-nav__link">
+        iqacml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/ismkl/" class="md-nav__link">
+        ismkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_5_78" type="checkbox" id="__nav_11_1_5_78" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/toolchains/linalg/">linalg</a>
+          
+            <label for="__nav_11_1_5_78">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="linalg" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_5_78">
+          <span class="md-nav__icon md-icon"></span>
+          linalg
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/acml/" class="md-nav__link">
+        acml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/atlas/" class="md-nav__link">
+        atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/blacs/" class="md-nav__link">
+        blacs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/blis/" class="md-nav__link">
+        blis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/flame/" class="md-nav__link">
+        flame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/flexiblas/" class="md-nav__link">
+        flexiblas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/fujitsussl/" class="md-nav__link">
+        fujitsussl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/gotoblas/" class="md-nav__link">
+        gotoblas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/intelmkl/" class="md-nav__link">
+        intelmkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/lapack/" class="md-nav__link">
+        lapack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/libsci/" class="md-nav__link">
+        libsci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/openblas/" class="md-nav__link">
+        openblas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/linalg/scalapack/" class="md-nav__link">
+        scalapack
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_5_79" type="checkbox" id="__nav_11_1_5_79" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/toolchains/mpi/">mpi</a>
+          
+            <label for="__nav_11_1_5_79">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="mpi" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_5_79">
+          <span class="md-nav__icon md-icon"></span>
+          mpi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/craympich/" class="md-nav__link">
+        craympich
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/fujitsumpi/" class="md-nav__link">
+        fujitsumpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/intelmpi/" class="md-nav__link">
+        intelmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/mpich/" class="md-nav__link">
+        mpich
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/mpich2/" class="md-nav__link">
+        mpich2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/mpitrampoline/" class="md-nav__link">
+        mpitrampoline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/mvapich2/" class="md-nav__link">
+        mvapich2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/openmpi/" class="md-nav__link">
+        openmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/psmpi/" class="md-nav__link">
+        psmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/qlogicmpi/" class="md-nav__link">
+        qlogicmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/mpi/spectrummpi/" class="md-nav__link">
+        spectrummpi
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/nvhpc/" class="md-nav__link">
+        nvhpc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/nvofbf/" class="md-nav__link">
+        nvofbf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/nvompi/" class="md-nav__link">
+        nvompi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/nvompic/" class="md-nav__link">
+        nvompic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/nvpsmpi/" class="md-nav__link">
+        nvpsmpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/nvpsmpic/" class="md-nav__link">
+        nvpsmpic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/pgi/" class="md-nav__link">
+        pgi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/pmkl/" class="md-nav__link">
+        pmkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/pomkl/" class="md-nav__link">
+        pomkl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/pompi/" class="md-nav__link">
+        pompi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/system/" class="md-nav__link">
+        system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/xlcxlf/" class="md-nav__link">
+        xlcxlf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/xlmpich/" class="md-nav__link">
+        xlmpich
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/xlmpich2/" class="md-nav__link">
+        xlmpich2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/xlmvapich2/" class="md-nav__link">
+        xlmvapich2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/toolchains/xlompi/" class="md-nav__link">
+        xlompi
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6" type="checkbox" id="__nav_11_1_6" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/">tools</a>
+          
+            <label for="__nav_11_1_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="tools" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/asyncprocess/" class="md-nav__link">
+        asyncprocess
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/build_details/" class="md-nav__link">
+        build_details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/build_log/" class="md-nav__link">
+        build_log
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/config/" class="md-nav__link">
+        config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/configobj/" class="md-nav__link">
+        configobj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_6" type="checkbox" id="__nav_11_1_6_6" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/containers/">containers</a>
+          
+            <label for="__nav_11_1_6_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="containers" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          containers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/containers/base/" class="md-nav__link">
+        base
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/containers/common/" class="md-nav__link">
+        common
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/containers/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/containers/singularity/" class="md-nav__link">
+        singularity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/containers/utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/convert/" class="md-nav__link">
+        convert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/deprecated/" class="md-nav__link">
+        deprecated
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/docs/" class="md-nav__link">
+        docs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/environment/" class="md-nav__link">
+        environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/filetools/" class="md-nav__link">
+        filetools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/hooks/" class="md-nav__link">
+        hooks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/include/" class="md-nav__link">
+        include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/jenkins/" class="md-nav__link">
+        jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_16" type="checkbox" id="__nav_11_1_6_16" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/job/">job</a>
+          
+            <label for="__nav_11_1_6_16">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="job" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_6_16">
+          <span class="md-nav__icon md-icon"></span>
+          job
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/job/backend/" class="md-nav__link">
+        backend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/job/gc3pie/" class="md-nav__link">
+        gc3pie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/job/pbs_python/" class="md-nav__link">
+        pbs_python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/job/slurm/" class="md-nav__link">
+        slurm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/loose_version/" class="md-nav__link">
+        loose_version
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_generator/" class="md-nav__link">
+        module_generator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_19" type="checkbox" id="__nav_11_1_6_19" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/module_naming_scheme/">module_naming_scheme</a>
+          
+            <label for="__nav_11_1_6_19">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="module_naming_scheme" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_6_19">
+          <span class="md-nav__icon md-icon"></span>
+          module_naming_scheme
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/categorized_hmns/" class="md-nav__link">
+        categorized_hmns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/categorized_mns/" class="md-nav__link">
+        categorized_mns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/easybuild_mns/" class="md-nav__link">
+        easybuild_mns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/hierarchical_mns/" class="md-nav__link">
+        hierarchical_mns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/migrate_from_eb_to_hmns/" class="md-nav__link">
+        migrate_from_eb_to_hmns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/mns/" class="md-nav__link">
+        mns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/toolchain/" class="md-nav__link">
+        toolchain
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/module_naming_scheme/utilities/" class="md-nav__link">
+        utilities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/modules/" class="md-nav__link">
+        modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/multidiff/" class="md-nav__link">
+        multidiff
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/options/" class="md-nav__link">
+        options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/output/" class="md-nav__link">
+        output
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_24" type="checkbox" id="__nav_11_1_6_24" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/package/">package</a>
+          
+            <label for="__nav_11_1_6_24">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="package" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_6_24">
+          <span class="md-nav__icon md-icon"></span>
+          package
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_24_1" type="checkbox" id="__nav_11_1_6_24_1" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/package/package_naming_scheme/">package_naming_scheme</a>
+          
+            <label for="__nav_11_1_6_24_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="package_naming_scheme" data-md-level="5">
+        <label class="md-nav__title" for="__nav_11_1_6_24_1">
+          <span class="md-nav__icon md-icon"></span>
+          package_naming_scheme
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/package/package_naming_scheme/easybuild_pns/" class="md-nav__link">
+        easybuild_pns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/package/package_naming_scheme/pns/" class="md-nav__link">
+        pns
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/package/utilities/" class="md-nav__link">
+        utilities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/parallelbuild/" class="md-nav__link">
+        parallelbuild
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_26" type="checkbox" id="__nav_11_1_6_26" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/py2vs3/">py2vs3</a>
+          
+            <label for="__nav_11_1_6_26">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="py2vs3" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_6_26">
+          <span class="md-nav__icon md-icon"></span>
+          py2vs3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/py2vs3/py2/" class="md-nav__link">
+        py2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/py2vs3/py3/" class="md-nav__link">
+        py3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_27" type="checkbox" id="__nav_11_1_6_27" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/repository/">repository</a>
+          
+            <label for="__nav_11_1_6_27">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="repository" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_6_27">
+          <span class="md-nav__icon md-icon"></span>
+          repository
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/repository/filerepo/" class="md-nav__link">
+        filerepo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/repository/gitrepo/" class="md-nav__link">
+        gitrepo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/repository/hgrepo/" class="md-nav__link">
+        hgrepo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/repository/repository/" class="md-nav__link">
+        repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/repository/svnrepo/" class="md-nav__link">
+        svnrepo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/robot/" class="md-nav__link">
+        robot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/run/" class="md-nav__link">
+        run
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/systemtools/" class="md-nav__link">
+        systemtools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/testing/" class="md-nav__link">
+        testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_1_6_32" type="checkbox" id="__nav_11_1_6_32" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../api/easybuild/tools/toolchain/">toolchain</a>
+          
+            <label for="__nav_11_1_6_32">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="toolchain" data-md-level="4">
+        <label class="md-nav__title" for="__nav_11_1_6_32">
+          <span class="md-nav__icon md-icon"></span>
+          toolchain
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/compiler/" class="md-nav__link">
+        compiler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/constants/" class="md-nav__link">
+        constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/fft/" class="md-nav__link">
+        fft
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/linalg/" class="md-nav__link">
+        linalg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/mpi/" class="md-nav__link">
+        mpi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/options/" class="md-nav__link">
+        options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/toolchain/" class="md-nav__link">
+        toolchain
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/toolchainvariables/" class="md-nav__link">
+        toolchainvariables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/utilities/" class="md-nav__link">
+        utilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/toolchain/variables/" class="md-nav__link">
+        variables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/utilities/" class="md-nav__link">
+        utilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/variables/" class="md-nav__link">
+        variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/easybuild/tools/version/" class="md-nav__link">
+        version
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-specific/supported-software/" class="md-nav__link">
+        List of supported software
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-help/" class="md-nav__link">
+        Getting help
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14" tabindex="0" aria-expanded="false">
+          Other topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other topics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Other topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation-alternative/" class="md-nav__link">
+        Alternative installation methods
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legacy/configuration/" class="md-nav__link">
+        Configuration (legacy)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_14_3" type="checkbox" id="__nav_14_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14_3" tabindex="0" aria-expanded="false">
+          Demos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Demos" data-md-level="2">
+        <label class="md-nav__title" for="__nav_14_3">
+          <span class="md-nav__icon md-icon"></span>
+          Demos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/" class="md-nav__link">
+        (overview)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/configuring/" class="md-nav__link">
+        Configuring EasyBuild
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/review-pr/" class="md-nav__link">
+        eb --review-pr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprecated-easyconfigs/" class="md-nav__link">
+        Deprecated easyconfigs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprecated-functionality/" class="md-nav__link">
+        Deprecated functionality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog-docs/" class="md-nav__link">
+        Documentation changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_14_7" type="checkbox" id="__nav_14_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14_7" tabindex="0" aria-expanded="false">
+          EasyBuild v4
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="EasyBuild v4" data-md-level="2">
+        <label class="md-nav__title" for="__nav_14_7">
+          <span class="md-nav__icon md-icon"></span>
+          EasyBuild v4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../easybuild-v4/overview-of-changes/" class="md-nav__link">
+        Overview of changes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../easybuild-v4/overview-relocated-functions-constants/" class="md-nav__link">
+        Overview of relocated functions/constants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing-environment-modules-without-root-permissions/" class="md-nav__link">
+        Installing Environment Modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing-lmod-without-root-permissions/" class="md-nav__link">
+        Installing Lmod
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../removed-functionality/" class="md-nav__link">
+        Removed functionality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../useful-scripts/" class="md-nav__link">
+        Useful scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="configuring_easybuild">Configuring EasyBuild<a class="headerlink" href="#configuring_easybuild" title="Permanent link">&para;</a></h1>
+<p>This page discusses the recommended style of configuring
+EasyBuild, which is supported since EasyBuild v1.3.0.</p>
+<p>See <a class="autorefs autorefs-internal" href="../demos/configuring/#demo_configuring">a demo on configuring EasyBuild</a>.</p>
+<h2 id="configuration_types">Supported configuration types<a class="headerlink" href="#configuration_types" title="Permanent link">&para;</a></h2>
+<p>Configuring EasyBuild can be done by:</p>
+<ul>
+<li>using <code>eb</code> with <strong>command line arguments</strong></li>
+<li>setting <strong>environment variables</strong> (<code>$EASYBUILD_...</code>)</li>
+<li>providing one or more <strong>configuration files</strong></li>
+</ul>
+<p>Of course, combining any of these types of configuration works too (and
+is even fairly common).</p>
+<p>The order of preference for the different configuration types is as listed above, that is:</p>
+<ul>
+<li>environment variables override the corresponding entries in the configuration file</li>
+<li>command line arguments in turn override the corresponding environment variables <em>and</em> matching entries in the
+  configuration file</li>
+</ul>
+<h3 id="configuration_consistency">Consistency across supported configuration types<a class="headerlink" href="#configuration_consistency" title="Permanent link">&para;</a></h3>
+<p>Note that the various available configuration options are handled
+<strong>consistently</strong> across the supported configuration types.</p>
+<p>For example: to configure EasyBuild to use Lmod as modules tool, the following alternatives are available:</p>
+<ul>
+<li>configuration file entry (key-value assignment):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">[config]</span>
+<span class="na">modules-tool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Lmod</span>
+</code></pre></div>
+<ul>
+<li>environment variable (upper case, <code>EASYBUILD_</code> prefix, <code>-</code>'s becomes <code>_</code>'s):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_MODULES_TOOL</span><span class="o">=</span>Lmod
+</code></pre></div>
+<ul>
+<li>command line argument (long options preceded by <code>--</code> and (optionally) using <code>=</code>):</li>
+</ul>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--modules-tool<span class="o">=</span>Lmod
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>eb<span class="w"> </span>--modules-tool<span class="w"> </span>Lmod
+</code></pre></div>
+<p>For more details w.r.t. each of the supported configuration types, see below.</p>
+<h3 id="configuration_file">Configuration file(s)<a class="headerlink" href="#configuration_file" title="Permanent link">&para;</a></h3>
+<h4 id="list_of_configuration_files">List of used configuration files<a class="headerlink" href="#list_of_configuration_files" title="Permanent link">&para;</a></h4>
+<p>The list of configuration files that will be used by EasyBuild is determined in the following order of preference:</p>
+<ul>
+<li>the path(s) specified via the <strong>command line argument</strong> <code>--configfiles</code></li>
+<li>the path(s) specified via the <code>$EASYBUILD_CONFIGFILES</code> <strong>environment variable</strong></li>
+<li>the <strong>default paths</strong> for EasyBuild configuration files</li>
+</ul>
+<h4 id="default_configuration_files">Default configuration files<a class="headerlink" href="#default_configuration_files" title="Permanent link">&para;</a></h4>
+<p>By default, EasyBuild will use existing configuration files at the following paths:</p>
+<ul>
+<li><code>$dir/easybuild.d/*.cfg</code>, for each directory <code>$dir</code> listed in <code>$XDG_CONFIG_DIRS</code> (where <code>$XDG_CONFIG_DIRS</code>
+  defaults to <code>/etc</code>)</li>
+<li><code>$XDG_CONFIG_HOME/easybuild/config.cfg</code> (where <code>$XDG_CONFIG_HOME</code> defaults to <code>$HOME/.config</code>)</li>
+</ul>
+<p>Hence, if <code>$XDG_CONFIG_HOME</code> and <code>$XDG_CONFIG_DIRS</code> are not defined, EasyBuild will only consider default
+configuration files at <code>/etc/easybuild.d/*.cfg</code> and <code>$HOME/.config/easybuild/config.cfg</code>.</p>
+<p>The configuration file located in <code>$XDG_CONFIG_HOME</code> will be listed <em>after</em> the ones obtained via <code>$XDG_CONFIG_DIRS</code>,
+such that user-defined configuration settings have preference over system defaults.</p>
+<p>A detailed overview of the list of default configuration files is available via <code>eb --show-default-configfiles</code>
+(available since EasyBuild v2.1.0). For example::</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nv">XDG_CONFIG_DIRS</span><span class="o">=</span>/tmp/etc:/tmp/moreetc<span class="w"> </span>eb<span class="w"> </span>--show-default-configfiles
+<span class="go">efault list of configuration files:</span>
+
+<span class="go">[with $XDG_CONFIG_HOME: (not set), $XDG_CONFIG_DIRS: /tmp/etc:/tmp/moreetc]</span>
+
+<span class="go">* user-level: ${XDG_CONFIG_HOME:-$HOME/.config}/easybuild/config.cfg</span>
+<span class="go">  -&gt; /home/example/.config/easybuild/config.cfg =&gt; found</span>
+<span class="go">* system-level: ${XDG_CONFIG_DIRS:-/etc}/easybuild.d/*.cfg</span>
+<span class="go">  -&gt; {/tmp/etc, /tmp/moreetc}/easybuild.d/*.cfg =&gt; /tmp/etc/easybuild.d/config.cfg, /tmp/moreetc/easybuild.d/bar.cfg, /tmp/moreetc/easybuild.d/foo.cfg</span>
+
+<span class="go">Default list of existing configuration files (4): /tmp/etc/easybuild.d/config.cfg, /tmp/moreetc/easybuild.d/bar.cfg, /tmp/moreetc/easybuild.d/foo.cfg, /home/example/.config/easybuild/config.cfg</span>
+</code></pre></div>
+<h4 id="multiple-configuration-files">Multiple configuration files<a class="headerlink" href="#multiple-configuration-files" title="Permanent link">&para;</a></h4>
+<p>If multiple configuration files are listed via a mechanism listed above, the settings in the last
+configuration file have preference over the others.</p>
+<p>Each available configuration file will be used, and the configuration settings specified in these files
+will be retained according to the order of preference as indicated above: settings in configuration files specified via
+<code>--configfiles</code> override those in configuration files specified via <code>$EASYBUILD_CONFIGFILES</code>, which in turns override
+settings in default configuration files.</p>
+<h4 id="ignored-configuration-files">Ignored configuration files<a class="headerlink" href="#ignored-configuration-files" title="Permanent link">&para;</a></h4>
+<p>On top of this, the <code>--ignoreconfigfiles</code> configuration option allows to specify configuration files that should be
+<em>ignored</em> by EasyBuild (regardless of whether they are specified via any of the options above).</p>
+<h3 id="configuration-file-format">Configuration file format<a class="headerlink" href="#configuration-file-format" title="Permanent link">&para;</a></h3>
+<p>The EasyBuild configuration file follows the default Python
+configuration format as parsed by the <code>configparser</code> module
+(see <code>http://docs.python.org/2/library/configparser.html</code>_).</p>
+<p>Configuration files are organized in sections, the section name for a
+particular configuration setting is indicated in the output of <code>eb --help</code>.
+Some examples sections are: <code>MAIN</code>, <code>basic</code>, <code>config</code>,
+<code>informative</code>, <code>override</code>, <code>regtest</code>, <code>software</code>, <code>unittest</code>, etc.</p>
+<p>Sections are indicated by specifying the section name in square brackets
+on a dedicated line, e.g., <code>[basic]</code>.</p>
+<p>Configuration settings are specified in a <code>key = value</code> or
+<code>key: value</code> format, <strong>without using quotes for string-like values</strong>.
+For boolean configuration settings, values that evaluated to <code>True</code>
+(e.g., <code>true</code>, <code>1</code>, …) are all equivalent to enabling the setting.</p>
+<p>Comment lines start with a hash character <code>#</code> (just like in Python code).</p>
+<p>An example configuration file that should make everything clear is shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">basic</span><span class="p">]</span>
+<span class="c1"># always enable logging to stdout</span>
+<span class="n">logtostdout</span> <span class="o">=</span> <span class="n">true</span>
+<span class="p">[</span><span class="n">config</span><span class="p">]</span>
+<span class="c1"># use Lmod as modules tool</span>
+<span class="n">modules</span><span class="o">-</span><span class="n">tool</span><span class="p">:</span> <span class="n">Lmod</span>
+<span class="c1"># use different default installation path</span>
+<span class="n">prefix</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">you</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">easybuild</span><span class="o">/</span>
+</code></pre></div>
+<h4 id="configuration_file_templates_constants">Templates and constants supported in configuration files<a class="headerlink" href="#configuration_file_templates_constants" title="Permanent link">&para;</a></h4>
+<p>Two types of template values <code>%(...)s</code> are supported in configuration files:</p>
+<ul>
+<li>for configuration options defined in the configuration file (and only those)<ul>
+<li><em>syntax:</em> <code>%(opt)s</code>, i.e., using the (lowercase) name of the configuration option</li>
+</ul>
+</li>
+<li>for the default value of selected configuration options (see <code>eb --avail-cfgfile-constants</code>)<ul>
+<li><em>syntax:</em> <code>%(DEFAULT_OPT)s</code>, i.e., using the uppercase name of the configuration option and prefixed with <code>DEFAULT_</code></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These template values are only supported in configuration files, <em>not</em> in environment variable values or 
+command line option values.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using an unknown template value, i.e. either one for a configuration option that was not defined in the
+configuration file, or a non-existing one for a particular default value, will result in an error like:
+<code>ConfigParser.InterpolationMissingOptionError: Bad value substitution</code>.</p>
+</div>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<p>To include both the (custom) location for the easyconfigs archive repository and the default list of robot search
+paths in the active robot search path, the following configuration file entry can be used, featuring the template
+for the <code>repositorypath</code> configuration option and the provided <code>DEFAULT_ROBOT_PATHS</code> constant::</p>
+<div class="highlight"><pre><span></span><code><span class="k">[basic]</span>
+<span class="na">repositorypath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/home/example/easybuild/easyconfigs_archive</span>
+<span class="na">robot-paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%(repositorypath)s:%(DEFAULT_ROBOT_PATHS)s</span>
+</code></pre></div>
+<p>See also <a class="autorefs autorefs-internal" href="../using-easybuild/#controlling_robot_search_path">Controlling the robot search path</a>.</p>
+<h4 id="generating-a-template-configuration-file">Generating a template configuration file<a class="headerlink" href="#generating-a-template-configuration-file" title="Permanent link">&para;</a></h4>
+<p>Since EasyBuild v1.10, a command line option <code>--confighelp</code> is
+available that prints out the help text as an annotated configuration
+file. This can be used as an empty template configuration file:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/.config/easybuild
+eb<span class="w"> </span>--confighelp<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOME</span>/.config/easybuild/config.cfg
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>head<span class="w"> </span><span class="nv">$HOME</span>/.easybuild/config.cfg
+<span class="go">[MAIN]</span>
+<span class="gp"># </span>Enable<span class="w"> </span>debug<span class="w"> </span>log<span class="w"> </span>mode<span class="w"> </span><span class="o">(</span>def<span class="w"> </span>False<span class="o">)</span>
+<span class="gp">#</span><span class="nv">debug</span><span class="o">=</span>
+<span class="gp"># </span>Enable<span class="w"> </span>info<span class="w"> </span>log<span class="w"> </span>mode<span class="w"> </span><span class="o">(</span>def<span class="w"> </span>False<span class="o">)</span>
+<span class="gp">#</span><span class="nv">info</span><span class="o">=</span>
+<span class="gp"># </span>Enable<span class="w"> </span>info<span class="w"> </span>quiet/warning<span class="w"> </span>mode<span class="w"> </span><span class="o">(</span>def<span class="w"> </span>False<span class="o">)</span>
+<span class="gp">#</span><span class="nv">quiet</span><span class="o">=</span>
+
+<span class="go">[basic]</span>
+<span class="gp"># </span>Print<span class="w"> </span>build<span class="w"> </span>overview<span class="w"> </span>incl.<span class="w"> </span>dependencies<span class="w"> </span><span class="o">(</span>full<span class="w"> </span>paths<span class="o">)</span><span class="w"> </span><span class="o">(</span>def<span class="w"> </span>False<span class="o">)</span>
+</code></pre></div>
+<h3 id="configuration_env_vars">Environment variables<a class="headerlink" href="#configuration_env_vars" title="Permanent link">&para;</a></h3>
+<p>All configuration settings listed as long options in <code>eb --help</code> can
+also be specified via <code>EASYBUILD_</code>-prefixed environment variables.</p>
+<p>Configuration settings specified this way always override the
+corresponding setting specified in a configuration file.</p>
+<p>For example, to enable debug logging using an environment variable:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_DEBUG</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>More examples of using environment variables to configure EasyBuild are
+shown in the sections below.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Any configuration option of EasyBuild which can be tuned by command line
+or via the configuration file, can also be tuned via a corresponding environment variable.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If any <code>$EASYBUILD</code>-prefixed environment variables are defined that do not correspond to a known
+configuration option, EasyBuild will report an error message and exit.</p>
+</div>
+<h3 id="configuration_cmdline">Command line arguments<a class="headerlink" href="#configuration_cmdline" title="Permanent link">&para;</a></h3>
+<p>The configuration type with the highest precedence are the <code>eb</code>
+command line arguments, which override settings specified through environment variables or in configuration files.</p>
+<p>For some configuration options, both short and long command line
+arguments are available (see <code>eb --help</code>); the long options indicate
+how the configuration setting should be specified in a configuration file
+or via an environment variable (<code>$EASYBUILD_&lt;LONGOPTION&gt;</code>).</p>
+<p>For boolean configuration settings, both the <code>--&lt;option&gt;</code> and
+<code>--disable-&lt;option&gt;</code> variants are always available.</p>
+<p>Examples (more below):</p>
+<ul>
+<li>enable debug logging (long option) and logging to stdout (short option)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--debug<span class="w"> </span>-l<span class="w"> </span>...
+</code></pre></div>
+<ul>
+<li>use <code>/dev/shm</code> as build path, install to temporary install path, disable debug logging</li>
+</ul>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--buildpath<span class="o">=</span>/dev/shm<span class="w"> </span>--installpath<span class="o">=</span>/tmp/<span class="nv">$USER</span><span class="w"> </span>--disable-debug<span class="w"> </span>...
+</code></pre></div>
+<h2 id="configuration_show_config">Overview of current configuration<a class="headerlink" href="#configuration_show_config" title="Permanent link">&para;</a></h2>
+<p><em>(<code>--show-config</code>, <code>--show-full-config</code>)</em></p>
+<p>To get an overview of the current EasyBuild configuration across all configuration types,
+you can use <code>eb --show-config</code>.</p>
+<p>The output will specify:</p>
+<ul>
+<li>any configuration setting for which the current value is different from the default value </li>
+<li>a couple of selected important configuration settings (even if they are still set to the default value), i.e.:<ul>
+<li><a class="autorefs autorefs-internal" href="#buildpath">build path</a></li>
+<li><a class="autorefs autorefs-internal" href="#installpath">install path</a></li>
+<li><a class="autorefs autorefs-internal" href="#easyconfigs_repo">path to easyconfigs repository</a></li>
+<li><a class="autorefs autorefs-internal" href="../using-easybuild/#robot_search_path">the robot search path</a></li>
+<li><a class="autorefs autorefs-internal" href="#sourcepath">source path</a></li>
+</ul>
+</li>
+<li>through which configuration type each setting was defined<ul>
+<li>i.e., default value, configuration file, environment variable or command line argument</li>
+</ul>
+</li>
+</ul>
+<p>Example output</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>cat<span class="w"> </span><span class="nv">$HOME</span>/.config/easybuild/config.cfg
+<span class="go">[config]</span>
+<span class="go">buildpath = /tmp/eb-build</span>
+
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_MODULES_TOOL</span><span class="o">=</span>Lmod
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_OPTARCH</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+<span class="gp">$ </span>eb<span class="w"> </span>--show-config<span class="w"> </span>--installpath<span class="o">=</span><span class="nv">$HOME</span>/apps<span class="w"> </span>--job-cores<span class="o">=</span><span class="m">4</span>
+<span class="gp">#</span>
+<span class="gp"># </span>Current<span class="w"> </span>EasyBuild<span class="w"> </span>configuration
+<span class="gp"># </span><span class="o">(</span>C:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>argument,<span class="w"> </span>D:<span class="w"> </span>default<span class="w"> </span>value,<span class="w"> </span>E:<span class="w"> </span>environment<span class="w"> </span>variable,<span class="w"> </span>F:<span class="w"> </span>configuration<span class="w"> </span>file<span class="o">)</span>
+<span class="gp">#</span>
+<span class="go">buildpath      (F) = /tmp/eb-build</span>
+<span class="go">installpath    (C) = /Users/example/apps</span>
+<span class="go">job-cores      (C) = 4</span>
+<span class="go">modules-tool   (E) = Lmod</span>
+<span class="go">optarch        (E) = &#39;&#39;</span>
+<span class="go">repositorypath (D) = /Users/example/.local/easybuild/ebfiles_repo</span>
+<span class="go">robot-paths    (D) = /Users/example/easybuild-easyconfigs/easybuild/easyconfigs</span>
+<span class="go">sourcepath     (D) = /Users/example/.local/easybuild/sources</span>
+</code></pre></div>
+<p>For a full overview of the current configuration, including <em>all</em> configuration settings,
+see <code>eb --show-full-config</code>.</p>
+<h2 id="configuration_available_settings">Available configuration settings<a class="headerlink" href="#configuration_available_settings" title="Permanent link">&para;</a></h2>
+<p>To obtain a full and up-to-date list of available configuration
+settings, see <code>eb --help</code>. We refrain from listing all available configuration settings here, to avoid outdated documentation.</p>
+<p>A couple of selected configuration settings are discussed below,
+in particular the mandatory settings.</p>
+<h3 id="configuration_mandatory_settings">Mandatory configuration settings<a class="headerlink" href="#configuration_mandatory_settings" title="Permanent link">&para;</a></h3>
+<p>A handful of configuration settings are <strong>mandatory</strong>, and should be
+provided using one of the supported configuration types.</p>
+<p>The following configuration settings are currently mandatory
+(more details in the sections below):</p>
+<ul>
+<li><a class="autorefs autorefs-internal" href="#sourcepath">Source path (--sourcepath)</a></li>
+<li><a class="autorefs autorefs-internal" href="#buildpath">Build path (--buildpath)</a></li>
+<li><a class="autorefs autorefs-internal" href="#installpath">Software and modules install path (--installpath, --installpath-software, --installpath-modules)</a></li>
+<li><a class="autorefs autorefs-internal" href="#easyconfigs_repo">Easyconfigs repository (--repository, --repositorypath)</a></li>
+<li><a class="autorefs autorefs-internal" href="#logfile_format">Logfile format (--logfile-format)</a></li>
+</ul>
+<p>If any of these configuration settings is not provided in one way or another, EasyBuild will complain and exit.</p>
+<p>In practice, all of these have reasonable defaults (see <code>eb --help</code> for the default settings).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mandatory path-related options can be tweaked collectively via <code>--prefix</code>, see <a class="autorefs autorefs-internal" href="#prefix">Overall prefix path (<code>--prefix</code>)</a> for more
+information.</p>
+</div>
+<h4 id="sourcepath">Source path (<code>--sourcepath</code>)<a class="headerlink" href="#sourcepath" title="Permanent link">&para;</a></h4>
+<p><em>default</em>: <code>$HOME/.local/easybuild/sources/</code> (determined via <a class="autorefs autorefs-internal" href="#prefix">Overall prefix path (<code>--prefix</code>)</a>)</p>
+<p>The <code>sourcepath</code> configuration setting specifies the parent path of
+the directory in which EasyBuild looks for software source and install files.</p>
+<p>Looking for the files specified via the <code>sources</code> parameter in the .eb
+easyconfig file is done in the following order of preference:</p>
+<ul>
+<li><code>&lt;sourcepath&gt;/&lt;name&gt;</code>: a subdirectory determined by the name of the software package</li>
+<li><code>&lt;sourcepath&gt;/&lt;letter&gt;/&lt;name&gt;</code>:  in the style of the <code>easyblocks</code>/<code>easyconfigs</code> directories: in a
+  subdirectory determined by the first letter (in lower case) of the software package and by its full <code>name</code></li>
+<li><code>&lt;sourcepath&gt;</code>: directly in the source path</li>
+</ul>
+<p>Note that these locations are also used when EasyBuild looks for patch
+files in addition to the various <code>easybuild/easyconfigs</code> directories that are listed in the $PYTHONPATH.</p>
+<p>You can specify multiple paths, separated with <code>:</code>, in which EasyBuild will look for sources, but only the first one
+will be used for downloading, so one needs to make sure at least the first path is writable by the user invoking <code>eb</code>.</p>
+<h4 id="buildpath">Build path (<code>--buildpath</code>)<a class="headerlink" href="#buildpath" title="Permanent link">&para;</a></h4>
+<p><em>default</em>: <code>$HOME/.local/easybuild/build/</code> (determined via <a class="autorefs autorefs-internal" href="#prefix">Overall prefix path (<code>--prefix</code>)</a>)</p>
+<p>The <code>buildpath</code> configuration setting specifies the parent path of the
+(temporary) directories in which EasyBuild builds its software packages.</p>
+<p>Each software package is (by default) built in a subdirectory of the
+specified <code>buildpath</code> under
+<code>&lt;name&gt;/&lt;version&gt;/&lt;toolchain&gt;&lt;versionsuffix&gt;</code>.</p>
+<p>Note that the build directories are emptied and removed by EasyBuild
+when the installation is completed (by default).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Using <code>/dev/shm</code> as build path can significantly speed up builds,
+if it is available and provides a sufficient amount of space. Setting up
+the variable <code>EASYBUILD_BUILDPATH</code> in your shell startup files makes this default.
+However be aware that, fi., two parallel GCC builds may fill up <code>/dev/shm</code> !</p>
+</div>
+<h4 id="installpath">Software and modules install path<a class="headerlink" href="#installpath" title="Permanent link">&para;</a></h4>
+<p><em>(<code>--installpath</code>, <code>--installpath-software</code>, <code>--installpath-modules</code>)</em></p>
+<p>defaults:</p>
+<ul>
+<li><em>software install path:</em> <code>$HOME/.local/easybuild/software</code>  (determined via <a class="autorefs autorefs-internal" href="#prefix">Overall prefix path (<code>--prefix</code>)</a> and <code>--subdir-software</code>)</li>
+<li><em>modules install path:</em> <code>$HOME/.local/easybuild/modules/all</code>  (determined via <a class="autorefs autorefs-internal" href="#prefix">Overall prefix path (<code>--prefix</code>)</a>,
+  <code>--subdir-modules</code> and <code>--suffix-modules-path</code>)</li>
+</ul>
+<p>There are several ways in which the software and modules install path used by EasyBuild can be configured:</p>
+<ul>
+<li>using the direct configuration options <code>--installpath-software</code> and <code>--installpath-modules</code> (see below)</li>
+<li>via the parent install path configuration option <code>--installpath</code> (see below)</li>
+<li>via the overall prefix path configuration option <code>--prefix</code> (see Overall prefix path (<code>--prefix</code>)][prefix])</li>
+</ul>
+<h5 id="installpath_direct_options">Direct options<a class="headerlink" href="#installpath_direct_options" title="Permanent link">&para;</a></h5>
+<p><em>(<code>--installpath-software</code> and <code>--installpath-modules</code>)</em></p>
+<p><em>default</em>: <em>(no default specified)</em></p>
+<p>The <code>--installpath-software</code> and <code>--installpath-modules</code> configuration options (available since EasyBuild v2.1.0)
+allow to directly specify the software and modules install paths, respectively.</p>
+<p>These configuration options have precedence over all of the other configuration options that relate to specifying the
+install path for software and/or modules (see below).</p>
+<h5 id="parent_installpath">Parent install path: <code>--installpath</code><a class="headerlink" href="#parent_installpath" title="Permanent link">&para;</a></h5>
+<p><em>default</em>: <em>(no default specified)</em></p>
+<p>The <code>--installpath</code> configuration option specifies the <em>parent</em> path of
+the directories in which EasyBuild should install software packages and the
+corresponding module files.</p>
+<p>The install path for software and modules specifically is determined by combining <code>--installpath</code> with
+<code>--subdir-software</code>, and combining <code>--installpath</code> with <code>--subdir-modules</code> and <code>--suffix-modules-path</code>,
+respectively.</p>
+<p>For more information on these companion configuration options, see
+<a class="autorefs autorefs-internal" href="#installpath_subdirs">Software and modules install path subdirectories (<code>--subdir-software</code>, <code>--subdir-modules</code>, <code>--suffix-modules-path</code>)</a>.</p>
+<h5 id="full-install-path-for-software-and-module-file">Full install path for software and module file<a class="headerlink" href="#full-install-path-for-software-and-module-file" title="Permanent link">&para;</a></h5>
+<p>The full software and module install paths for a particular software package are determined by the active
+module naming scheme along with the general software and modules install paths specified by the EasyBuild configuration.</p>
+<p>Both the software itself and the corresponding module file will be installed in a subdirectory of the corresponding
+install path named according to the active module naming scheme (default format:
+<code>&lt;name&gt;/&lt;version&gt;-&lt;toolchain&gt;&lt;versionsuffix&gt;</code>).
+Additionally, symlinks to the actual module file are installed in a subdirectory of the modules install path
+named according to the value of the <code>moduleclass</code> easyconfig parameter.</p>
+<p>For more information on the module naming scheme used by EasyBuild, see
+<a class="autorefs autorefs-internal" href="#module_naming_scheme">Active module naming scheme (<code>--module-naming-scheme</code>)</a>.</p>
+<h5 id="updating-modulepath">Updating <code>$MODULEPATH</code><a class="headerlink" href="#updating-modulepath" title="Permanent link">&para;</a></h5>
+<p>To make the modules generated by EasyBuild available, the <code>$MODULEPATH</code> environment variable must be updated
+to include the modules install path.</p>
+<p>The recommended way to do this is to use the <code>module use</code> command.
+For example:</p>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--installpath<span class="o">=</span><span class="nv">$HOME</span>/easybuild
+module<span class="w"> </span>use<span class="w"> </span><span class="nv">$HOME</span>/easybuild/modules/all
+</code></pre></div>
+<p>It is probably a good idea to add this to your (favourite) shell
+<code>.rc</code> file, e.g., <code>~/.bashrc</code>, and/or the <code>~/.profile</code> login scripts,
+so you do not need to adjust <code>$MODULEPATH</code> every time you start a new session.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Updating <code>$MODULEPATH</code> is not required for EasyBuild itself, since <code>eb</code> updates <code>$MODULEPATH</code> itself at
+runtime according to the modules install path it is configured with.</p>
+</div>
+<h4 id="easyconfigs_repo">Easyconfigs repository (<code>--repository</code>, <code>--repositorypath</code>)<a class="headerlink" href="#easyconfigs_repo" title="Permanent link">&para;</a></h4>
+<p><em>default</em>: <code>FileRepository</code> at <code>$HOME/.local/easybuild/ebfiles_repo</code>
+(determined via Overall prefix path (<code>--prefix</code>)][prefix])</p>
+<p>EasyBuild has support for archiving (tested) <code>.eb</code> easyconfig files.
+After successfully installing a software package using EasyBuild, the
+corresponding <code>.eb</code> file is uploaded to a repository defined by the
+<code>repository</code> and <code>repositorypath</code> configuration settings.</p>
+<p>Currently, EasyBuild supports the following repository types (see also
+<code>eb --avail-repositories</code>):</p>
+<ul>
+<li><code>FileRepository('path', 'subdir')</code>: a plain flat file repository;
+  <code>path</code> is the path where files will be stored, <code>subdir</code> is an
+  <em>optional</em> subdirectory of that path where the files should be stored</li>
+<li><code>GitRepository('path', 'subdir/in/repo'</code>: a <em>non-empty</em> <strong>bare</strong>
+  git repository (created with <code>git init --bare</code> or <code>git clone --bare</code>);
+  <code>path</code> is the path to the git repository (can also be a URL);
+  <code>subdir/in/repo</code> is optional, and specifies a subdirectory of the
+  repository where files should be stored in</li>
+<li><code>SvnRepository('path', 'subdir/in/repo')</code>: an SVN repository;
+  <code>path</code> contains the subversion repository location (directory or
+  URL), the optional second value specifies a subdirectory in the repository</li>
+</ul>
+<p>You need to set the <code>repository</code> setting inside a configuration file like this:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">config</span><span class="p">]</span>
+<span class="n">repository</span> <span class="o">=</span> <span class="n">FileRepository</span>
+<span class="n">repositorypath</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>Or, optionally an extra argument representing a subdirectory can be specified, e.g.:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_REPOSITORY</span><span class="o">=</span>GitRepository
+<span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_REPOSITORYPATH</span><span class="o">=</span>&lt;path&gt;,&lt;subdir&gt;
+</code></pre></div>
+<p>You do not have to worry about importing these classes,
+EasyBuild will make them available to the configuration file.</p>
+<p>Using <code>git</code> requires the <code>GitPython</code> Python modules, using <code>svn</code>
+requires the <code>pysvn</code> Python module (see <a class="autorefs autorefs-internal" href="../installation/#dependencies">Dependencies</a>).</p>
+<p>If access to the easyconfigs repository fails for some reason
+(e.g., no network or a missing required Python module), EasyBuild will
+issue a warning. The software package will still be installed, but the
+(successful) easyconfig will not be automatically added to the archive
+(i.e., it is not considered a fatal error).</p>
+<h4 id="logfile_format">Logfile format (<code>--logfile-format</code>)<a class="headerlink" href="#logfile_format" title="Permanent link">&para;</a></h4>
+<p><em>default</em>:
+<code>easybuild, easybuild-%(name)s-%(version)s-%(date)s.%(time)s.log</code></p>
+<p>The <code>logfile format</code> configuration setting contains a tuple
+specifying a log directory name and a template log file name.
+In both of these values, using the following string templates
+is supported:</p>
+<ul>
+<li><code>%(name)s</code>: the name of the software package to install</li>
+<li><code>%(version)s</code>: the version of the software package to install</li>
+<li><code>%(date)s</code>: the date on which the installation was performed (in <code>YYYYMMDD</code> format, e.g. <code>20120324</code>)</li>
+<li><code>%(time)s</code>: the time at which the installation was started (in <code>HHMMSS</code> format, e.g. <code>214359</code>)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because templating is supported in configuration files themselves (see
+<a class="autorefs autorefs-internal" href="#configuration_file_templates_constants">Templates and constants supported in configuration files</a>), the
+'<code>%</code>' character in these template values must be escaped when used in a configuration file (and only then),
+e.g., '<code>%%(name)s</code>'. Without escaping, an error like <code>InterpolationMissingOptionError: Bad value
+substitution</code> will be thrown by <code>ConfigParser</code>.</p>
+</div>
+<p>For example, configuring EasyBuild to generate a log file mentioning only the software name in a directory named
+<code>easybuild</code> can be done via the <code>--logfile-format</code> command line option:</p>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--logfile-format<span class="o">=</span><span class="s2">&quot;easybuild,easybuild-%(name)s.log&quot;</span><span class="w"> </span>...
+</code></pre></div>
+<p>or the <code>$EASYBUILD_LOGFILE_FORMAT</code> environment variable:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_LOGFILE_FORMAT</span><span class="o">=</span><span class="s2">&quot;easybuild,easybuild-%(name)s.log&quot;</span>
+</code></pre></div>
+<p>or by including the following in an EasyBuild configuration file (note the use of '<code>%%</code>' to escape the <code>name</code>
+template value here):</p>
+<div class="highlight"><pre><span></span><code><span class="na">logfile-format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">easybuild,easybuild-%%(name)s.log</span>
+</code></pre></div>
+<h3 id="configuration_optional_settings">Optional configuration settings<a class="headerlink" href="#configuration_optional_settings" title="Permanent link">&para;</a></h3>
+<p>The subsections below discuss a couple of commonly used optional configuration settings.</p>
+<h4 id="prefix">Overall prefix path (<code>--prefix</code>)<a class="headerlink" href="#prefix" title="Permanent link">&para;</a></h4>
+<p><em>default:</em> <code>$HOME/.local/easybuild</code></p>
+<p>The overall prefix path used by EasyBuild can be specified using the <code>--prefix</code> configuration option.</p>
+<p>This affects the default value of several configuration options:</p>
+<ul>
+<li><a class="autorefs autorefs-internal" href="#sourcepath">source path</a></li>
+<li><a class="autorefs autorefs-internal" href="#buildpath">build path</a></li>
+<li><a class="autorefs autorefs-internal" href="#installpath">software and modules install path</a></li>
+<li><a class="autorefs autorefs-internal" href="#easyconfigs_repo">easyconfigs repository path</a></li>
+<li><a class="autorefs autorefs-internal" href="../packaging-support/#packaging_config">package path</a></li>
+<li><a class="autorefs autorefs-internal" href="../containers/#containers_cfg_path">container path</a></li>
+</ul>
+<h4 id="installpath_subdirs">Software and modules install path subdirectories<a class="headerlink" href="#installpath_subdirs" title="Permanent link">&para;</a></h4>
+<p><em>(<code>--subdir-software</code>, <code>--subdir-modules</code>, <code>--suffix-modules-path</code>)</em></p>
+<p><em>defaults</em>:</p>
+<ul>
+<li><em>software install path subdirectory</em> (<code>--subdir-software</code>): <code>software</code></li>
+<li><em>modules install path subdirectory</em> (<code>--subdir-modules</code>): <code>modules</code></li>
+<li><em>modules install path suffix</em> (<code>--suffix-modules-path</code>): <code>all</code></li>
+</ul>
+<p>The subdirectories for the software and modules install paths (relative to <code>--installpath</code>, see <a class="autorefs autorefs-internal" href="#installpath">install path</a>)
+can be specified using the corresponding dedicated configuration options (available since EasyBuild v1.14.0).</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">EASYBUILD_SUBDIR_SOFTWARE</span><span class="o">=</span>installs
+eb<span class="w"> </span>--installpath<span class="o">=</span><span class="nv">$HOME</span>/easybuild<span class="w"> </span>--subdir-modules<span class="o">=</span>module_files<span class="w"> </span>...
+</code></pre></div>
+<h4 id="modules_tool">Modules tool (<code>--modules-tool</code>)<a class="headerlink" href="#modules_tool" title="Permanent link">&para;</a></h4>
+<p><em>default</em>: <code>Lmod</code></p>
+<p>Specifying the modules tool that should be used by EasyBuild can be
+done using the <code>modules-tool</code> configuration setting.
+A list of supported modules tools can be obtained using <code>eb --avail-modules-tools</code>.</p>
+<p>Currently, the following modules tools are supported:</p>
+<ul>
+<li><code>Lmod</code> <em>(default)</em>: Lmod, an modern alternative to environment modules, written in Lua (<code>lmod</code>)</li>
+<li><code>EnvironmentModules</code>: modern Tcl-only version of environment modules (4.x) (<code>modulecmd.tcl</code>)</li>
+<li><code>EnvironmentModulesC</code>: Tcl/C version of environment modules, usually version 3.2.10 (<code>modulecmd</code>)</li>
+<li><code>EnvironmentModulesTcl</code>: (ancient) Tcl-only version of environment modules (<code>modulecmd.tcl</code>)</li>
+</ul>
+<p>You can determine which modules tool you are using by checking the
+output of <code>type -f module</code> (in a <code>bash</code> shell), or <code>alias module</code> (in a <code>tcsh</code> shell).</p>
+<p>The actual module command (i.e., <code>modulecmd</code>, <code>modulecmd.tcl</code>,
+<code>lmod</code>, ...) must be available via <code>$PATH</code> (which is not standard), except when using Lmod
+(in that case the <code>lmod</code> binary can also be located via <code>$LMOD_CMD</code>).</p>
+<p>For example, to indicate that EasyBuild should be using <code>Lmod</code> as modules tool:</p>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--modules-tool<span class="o">=</span>Lmod<span class="w"> </span>...
+</code></pre></div>
+<h4 id="module_naming_scheme">Active module naming scheme (<code>--module-naming-scheme</code>)<a class="headerlink" href="#module_naming_scheme" title="Permanent link">&para;</a></h4>
+<p><em>default</em>: <code>EasyBuildModuleNamingScheme</code></p>
+<p>The module naming scheme that should be used by EasyBuild can be
+specified using the <code>module-naming-scheme</code> configuration setting.</p>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--module-naming-scheme<span class="o">=</span>HierarchicalMNS<span class="w"> </span>...
+</code></pre></div>
+<p>For more details, see the dedicated page on
+<a href="https://github.com/easybuilders/easybuild/wiki/Using-a-custom-module-naming-scheme">using a custom module naming scheme</a>.</p>
+<h4 id="module_syntax">Module files syntax (<code>--module-syntax</code>)<a class="headerlink" href="#module_syntax" title="Permanent link">&para;</a></h4>
+<p><em>default</em>: <code>Lua</code></p>
+<p><em>supported since</em>: EasyBuild v2.1</p>
+<p>The syntax to use for generated module files can be specified using the <code>--module-syntax</code> configuration setting.</p>
+<p>Possible values are:</p>
+<ul>
+<li><code>Lua</code>: generate module files in Lua syntax<ul>
+<li>this requires the use of Lmod as a modules tool to consume the module files (see <a class="autorefs autorefs-internal" href="#modules_tool">modules tool</a>)</li>
+<li>module file names will have the <code>.lua</code> extension</li>
+</ul>
+</li>
+<li><code>Tcl</code>: generate module files in Tcl syntax<ul>
+<li>Tcl module files can be consumed by all supported modules tools</li>
+<li>module files will contain a header string <code>#%Module</code> indicating that they are composed in Tcl syntax</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lmod is able to deal with having module files in place in both Tcl and Lua syntax. When a module file in Lua
+syntax (i.e., with a <code>.lua</code> file name extension) is available, a Tcl module file with the same name will be
+ignored. The Tcl-based environment modules tool will simply ignore module files in Lua syntax, since they do not
+contain the header string that is included in Tcl module files.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using module files in Lua syntax has the advantage that Lmod does not need to translate from Lua to Tcl internally
+when processing the module files, which benefits responsiveness of Lmod when used interactively by users. In terms
+of Lmod-specific aspects of module files, the syntax of the module file does <em>not</em> matter; Lmod-specific statements
+supported by EasyBuild can be included in Tcl module files as well, by guarding them by a condition that only
+evaluates positively when Lmod is consuming the module file, i.e.
+'<code>if { [ string match "*tcl2lua.tcl" $env(_) ] } { ... }</code>'. Only conditional load statements like
+'<code>load(atleast("gcc","4.8"))</code>' can only be used in Lua module files.</p>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 23, 2022</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/easy_build" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/c/easybuilders" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://docs.easybuild.io" target="_blank" rel="noopener" title="docs.easybuild.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "toc.follow", "toc.integrate", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../js/asciinema-player-2.6.1.js"></script>
+      
+    
+  </body>
+</html>
