@@ -401,11 +401,169 @@ in 2025: 5 in total (1 major release + 2 feature releases + 2 bugfix/update rele
 
 ## EESSI
 
-***Q51. Have you heard about the EESSI project?
-(European Environment for Scientific Software Installations, see https://eessi.io)***
+```vegalite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Have you heard about the EESSI project?",
+  "width": 500,
+  "data": {
+    "values": [
+      {"year": 2022, "answer": "Yes, really interesting",               "count": 27},
+      {"year": 2022, "answer": "Yes, have not played with it yet",      "count": 38},
+      {"year": 2022, "answer": "Only vague notion of it",               "count": 13},
+      {"year": 2022, "answer": "Heard about it, not sure what it is",   "count": 9},
+      {"year": 2022, "answer": "No idea what it is",                    "count": 30},
+
+      {"year": 2023, "answer": "Yes, really interesting",               "count": 34},
+      {"year": 2023, "answer": "Yes, have not played with it yet",      "count": 41},
+      {"year": 2023, "answer": "Only vague notion of it",               "count": 11},
+      {"year": 2023, "answer": "Heard about it, not sure what it is",   "count": 8},
+      {"year": 2023, "answer": "No idea what it is",                    "count": 14},
+    
+      {"year": 2024, "answer": "Yes, really interesting",               "count": 42},
+      {"year": 2024, "answer": "Yes, have not played with it yet",      "count": 50},
+      {"year": 2024, "answer": "Only vague notion of it",               "count": 14},
+      {"year": 2024, "answer": "Heard about it, not sure what it is",   "count": 2},
+      {"year": 2024, "answer": "No idea what it is",                    "count": 12},
+    
+      {"year": 2025, "answer": "Yes, really interesting",               "count": 1},
+      {"year": 2025, "answer": "Yes, have not played with it yet",      "count": 1},
+      {"year": 2025, "answer": "Only vague notion of it",               "count": 1},
+      {"year": 2025, "answer": "Heard about it, not sure what it is",   "count": 1},
+      {"year": 2025, "answer": "No idea what it is",                    "count": 1}
+    ]
+  },
+  "transform": [
+    {"joinaggregate": [{
+        "op": "sum",
+        "field": "count",
+        "as": "total_count"
+      }],
+      "groupby": ["year"]
+    },
+    {"calculate": "100*datum.count/datum.total_count", "as": "value"}
+  ],
+  "mark": {
+    "type": "line",
+    "point": {"size": 50, "shape": "circle"},
+    "tooltip": true
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal"
+    },
+
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "% of participants",
+      "axis": {
+         "format": ".1f",
+         "labelExpr": "datum.value + '%'"
+      }
+    },
+
+    "color": {
+      "field": "answer",
+      "scale": {
+        "domain": [
+          "Yes, really interesting",
+          "Yes, have not played with it yet",
+          "Only vague notion of it",
+          "Heard about it, not sure what it is",
+          "No idea what it is"
+        ],
+        "range": ["darkgreen", "lightgreen", "#4682b4", "orange", "red"]
+      },
+      "legend": {
+        "title": "",
+        "labelLimit": 200,
+        "labelFontSize": 12
+      }
+    }
+  }
+}
+```
 
 ***Q52. Is EESSI available on the HPC systems you use?
 (check with "ls /cvmfs/software.eessi.io", see also https://eessi.io/docs/getting_access/is_eessi_accessible + https://eessi.io/docs/systems/)?***
+
+```vegalite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Is EESSI available on the HPC systems you use?  PARTIAL DATA 20260314",
+  "width": 500,
+  "data": {
+    "values": [
+      {"year": 2024, "answer": "Yes, on each system I use",           "count": 12},
+      {"year": 2024, "answer": "Yes, on most systems I use",          "count": 6},
+      {"year": 2024, "answer": "Yes, on some systems I use",          "count": 15},
+      {"year": 2024, "answer": "Yes, but only by exception",          "count": 6},
+      {"year": 2024, "answer": "No, not on any of the systems I use", "count": 82},
+
+      {"year": 2025, "answer": "Yes, on each system I use",           "count": 6},
+      {"year": 2025, "answer": "Yes, on most systems I use",          "count": 2},
+      {"year": 2025, "answer": "Yes, on some systems I use",          "count": 6},
+      {"year": 2025, "answer": "Yes, but only by exception",          "count": 1},
+      {"year": 2025, "answer": "No, not on any of the systems I use", "count": 12}
+    ]
+  },
+  "transform": [
+    {"joinaggregate": [{
+        "op": "sum",
+        "field": "count",
+        "as": "total_count"
+      }],
+      "groupby": ["year"]
+    },
+    {"calculate": "100*datum.count/datum.total_count", "as": "value"}
+  ],
+  "mark": {
+    "type": "line",
+    "point": {"size": 50, "shape": "circle"},
+    "tooltip": true
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal"
+    },
+
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "% of participants",
+      "axis": {
+         "format": ".1f",
+         "labelExpr": "datum.value + '%'"
+      }
+    },
+
+    "color": {
+      "field": "answer",
+      "scale": {
+        "domain": [
+          "Yes, on each system I use",
+          "Yes, on most systems I use",
+          "Yes, on some systems I use",
+          "Yes, but only by exception",
+          "No, not on any of the systems I use"
+        ],
+        "range": ["darkgreen", "lightgreen", "#4682b4", "orange", "red"]
+      },
+      "legend": {
+        "title": "",
+        "labelLimit": 200,
+        "labelFontSize": 12
+      }
+    }
+  }
+}
+```
+
 
 ## AI / LLMs
 
@@ -564,7 +722,7 @@ in 2025: 5 in total (1 major release + 2 feature releases + 2 bugfix/update rele
 ```vegalite
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "A simple donut chart with embedded data.",
+  "title": "How would you rate the overall quality of EasyBuild?",
   "width": 200,
   "height": 200,
   "data": {
