@@ -36,6 +36,10 @@ extra_css:
   - stylesheets/asciinema-player-2.6.1.css
 extra_javascript:
   - js/asciinema-player-2.6.1.js
+  # for plots & charts
+  - https://cdn.jsdelivr.net/npm/vega@5
+  - https://cdn.jsdelivr.net/npm/vega-lite@5
+  - https://cdn.jsdelivr.net/npm/vega-embed@6
 repo_name: EasyBuild @ GitHub
 repo_url: https://github.com/easybuilders/easybuild-easyconfigs
 edit_uri: https://github.com/easybuilders/easybuild-docs/blob/main/docs
@@ -153,17 +157,15 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: vegalite
+          class: vegalite
+          format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
   # clickable details
   - pymdownx.details
   # tabbed contents
   - pymdownx.tabbed
   - toc:
       permalink: true
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
 extra:
   analytics:
     provider: google
@@ -182,6 +184,8 @@ extra:
 plugins:
   # autolinks across pages
   - autorefs
+  # plots & charts
+  - charts
   # api documentation
   - mkdocstrings:
       default_handler: python
